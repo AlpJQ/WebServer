@@ -11,6 +11,7 @@ import java.net.Socket;
 /**
  * @author sinjinsong
  * @date 2018/5/4
+ * 请求接收线程，这是一个实现Runnable接口的线程类
  */
 @Slf4j
 public class BioAcceptor implements Runnable {

@@ -10,6 +10,7 @@ import java.net.Socket;
 /**
  * @author sinjinsong
  * @date 2018/5/4
+ * Socket的包装类
  */
 @Slf4j
 @Getter

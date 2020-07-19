@@ -112,6 +112,7 @@ public class ServletContext {
             }
         }
 
+        //把路径最长得取出来
         if (!matchingPatterns.isEmpty()) {
             Comparator<String> patternComparator = matcher.getPatternComparator(url);
             Collections.sort(matchingPatterns, patternComparator);

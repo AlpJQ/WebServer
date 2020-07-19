@@ -38,7 +38,7 @@ public class BioEndpoint extends Endpoint {
     private void initAcceptor() {
         acceptor = new BioAcceptor(this, dispatcher);
         Thread t = new Thread(acceptor, "bio-acceptor");
-        t.setDaemon(true);
+        t.setDaemon(true); // 将请求接收线程acceptor设置为守护线程
         t.start();
     }
 

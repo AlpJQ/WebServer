@@ -17,6 +17,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * @author sinjinsong
  * @date 2018/3/6
+ *
+ * 注意Poller中保存了所有的活跃Socket（成员变量sockets），其中有些socket是初次连接的，
+ * 有些是keep-alive的，我还另外设置了一个IdleConnectionCleaner，用于清除一段时间内没有
+ * 任何数据交换的socket，实现就是在SocketWrapper中添加一个waitBegin成员变量，在建立
+ * 连接/keep-alive时设置waitBegin，并设置一个Scheduler定期扫描sockets，将当前时间
+ * 距waitBegin超过阈值的连接关闭。
  */
 @Slf4j
 public class NioPoller implements Runnable {

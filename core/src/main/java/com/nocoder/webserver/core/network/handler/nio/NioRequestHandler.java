@@ -21,6 +21,8 @@ import java.util.List;
 
 /**
  * Created by SinjinSong on 2017/7/21.
+ * 这里涉及了keep-alive的实现，如果请求头中有connection:keep-alive，
+ * 就将其重新注册到Poller的Queue，等待下一次读就绪事件。
  */
 @Setter
 @Getter

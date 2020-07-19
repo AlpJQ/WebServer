@@ -14,6 +14,8 @@ import java.util.concurrent.*;
 
 /**
  * Created by SinjinSong on 2017/7/20.
+ * Java的AIO的编程风格与BIO、NIO很不相似，accept、read、write都是异步方法，
+ * 后续代码执行必须放在CompletionHandler中进行回调。
  */
 @Slf4j
 public class AioEndpoint extends Endpoint {

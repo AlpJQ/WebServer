@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2018/5/4
  * 
  * 所有Dispatcher（请求分发器）的父类
+ * 请求分发线程，往往对应一个线程池，负责读取Request以及将RequestHandler放入线程池中执行
  */
 public abstract class AbstractDispatcher {
     protected ResourceHandler resourceHandler;

@@ -23,7 +23,8 @@ import java.util.List;
  * @author sinjinsong
  * @date 2018/5/4
  * RequestHandler 的父类，通过父类来复用成员变量和部分方法
- * 不同IO模型的RequestHandler基本是在将Response写回客户端这部分有不同的实现，在这里被设置为了抽象方法
+ * 不同IO模型的RequestHandler基本是在将Response写回客户端这部分有不同的实现，
+ * 在这里被设置为了抽象方法
  */
 @Slf4j
 @Getter
@@ -59,6 +60,14 @@ public abstract class AbstractRequestHandler implements FilterChain, Runnable {
 
     /**
      * 入口
+     */
+    /*
+        这里有一个递归的过程。
+        run方法开始执行会先调用第一个filter，第一个filter如果放行，那么会调用filterChain
+        （也就是requestHandler，this）的doFilter，此时会将filterIndex++，然后调用下一个
+        filter的doFilter方法，如此反复，直至所有filter都被调用，此时将调用service方法，
+        执行servlet业务逻辑。如果不放行，那么会在某个filter的doFilter执行完毕后结束整个
+        逻辑（一般需要进行重定向）。
      */
     @Override
     public void run() {
